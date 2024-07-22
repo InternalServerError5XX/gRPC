@@ -1,6 +1,9 @@
+using BookApi;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+builder.Services.AddScoped<ApiExceptionFilter>();
 builder.Services.AddHttpClient();
 builder.Services.AddGrpc();
 
@@ -22,4 +25,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+await app.RunAsync();
